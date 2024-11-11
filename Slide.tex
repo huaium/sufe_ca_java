@@ -347,7 +347,6 @@ import mypackage.MyClass;
     \end{lstlisting}
 \end{frame}
 
-
 \begin{frame}
     \frametitle{设计模式：组合}
     \textcolor{sufered}{组合而非继承}
@@ -355,6 +354,247 @@ import mypackage.MyClass;
     \texttt{组合模型中，一个对象（称为复合对象）可以包含另一个对象（称为组件对象），复合对象可以使用组件对象的行为}
 
     \textcolor{sufered}{降低继承可能带来的耦合性}
+\end{frame}
+
+\section{面向对象程序设计}
+\begin{frame}
+    \frametitle{设计模式}
+    \textcolor{sufered}{设计模式(Design Pattern)}
+
+    是对软件设计中普遍存在（反复出现）的各种问题，所提出的解决方案
+\end{frame}
+
+\begin{frame}
+    \frametitle{一题多解}
+    同一输出可以由很多种程序结构来实现
+
+    \textcolor{sufered}{设计模式要解决的问题是}
+    \begin{itemize}
+        \item 实用性：解决实际需求
+        \item 可复用性：减少代码重复
+        \item 易维护性：方便代码维护
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{在OOP之前}
+    \begin{itemize}
+        \item 尼克劳斯·维尔特(Niklaus Wirth): 《算法+数据结构=程序》
+        \item 传统设计模式(C-Style)：结构化、过程式程序设计
+    \end{itemize}
+
+    \textcolor{sufered}{将算法放在第一位，数据结构放在第二位}
+\end{frame}
+
+\begin{frame}
+    \frametitle{OOP:面向对象程序设计}
+    \begin{itemize}
+        \item 阿兰·凯(Alan Kay)：面向对象编程的创始人之一
+        \item 封装(Encapsulation)：数据与操作封装在对象中
+        \item 继承(Inheritance)：通过继承重用代码
+        \item 多态(Polymorphism)：为实现同一接口的不同对象提供同一操作，产生不同行为，但该行为在逻辑上是相同的
+    \end{itemize}
+
+    \textcolor{sufered}{将对象放在第一位，强调数据与行为的结合}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \textcolor{sufered}{Comparison Between C-Style and OOP}
+    \includegraphics[width=0.95\linewidth]{ch2/oop.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{对象}
+
+    \textcolor{sufered}{对象的主要特性}
+    \begin{itemize}
+        \item \textbf{对象的行为 (behavior)}：可以对对象完成哪些操作，或者可以对对象应用哪些方法？
+        \item \textbf{对象的状态 (state)}：当调用那些方法时，对象会如何响应？
+        \item \textbf{对象的标识 (identity)}：如何区分具有相同行为与状态的不同对象？
+    \end{itemize}
+
+    \textcolor{sufered}{对象的状态与标识是每个对象独有的，即便在同一类的实例中，也存在差异}
+\end{frame}
+
+\begin{frame}
+    \frametitle{一些术语}
+
+    \begin{itemize}
+        \item \textbf{行为 $\approx$ 方法}
+        \item \textbf{状态 $\approx$ 属性 $\approx$ 字段}
+    \end{itemize}
+    \textcolor{sufered}{相对来讲，行为和状态更为抽象}
+    
+    方法、属性和字段通常可以特指，而行为和状态则可以理解为是它们的集合
+\end{frame}
+
+\begin{frame}
+    \frametitle{Example}
+    \begin{table}
+        \centering
+        \vspace{-0.5cm}
+        \setlength{\tabcolsep}{5mm}
+        {
+            \begin{tabular}{lcc}
+                \toprule %\hline
+                \textbf{现实世界} & \textbf{计算机模型} & \textbf{Java代码}                      \\ \midrule
+                人             & 类 / class      & \texttt{class Person \{ \}}          \\
+                小明            & 实例 / ming      & \texttt{Person ming = new Person();} \\
+                小红            & 实例 / hong      & \texttt{Person hong = new Person();} \\
+                小军            & 实例 / jun       & \texttt{Person jun = new Person();}  \\ \bottomrule
+            \end{tabular}
+        }
+    \end{table}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example(Continue)}
+    \textcolor{sufered}{Person类及其实例}
+    \begin{lstlisting}
+class Person {
+    public String name;
+    public int age;
+}
+
+Person ming = new Person();
+ming.name = "Xiao Ming"; // 对字段name赋值
+ming.age = 12; // 对字段age赋值
+System.out.println(ming.name); // 访问字段name
+
+Person hong = new Person();
+hong.name = "Xiao Hong";
+hong.age = 15;
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \textcolor{sufered}{Person类及其实例}
+    \includegraphics[width=0.8\linewidth]{ch2/person.png}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{封装性}
+    \textcolor{sufered}{public带来的逻辑混乱}
+    \begin{lstlisting}
+Person ming = new Person();
+ming.name = "Xiao Ming";
+ming.age = -99; // age设置为负数 
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{封装性}
+    \textcolor{sufered}{试试private？}
+    \begin{lstlisting}
+public class Main {
+    public static void main(String[] args) {
+        Person ming = new Person();
+        ming.name = "Xiao Ming"; // 对字段name赋值
+        ming.age = 12; // 对字段age赋值
+        // Error: not visible!!!
+    }
+}
+
+class Person {
+    private String name;
+    private int age;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{this变量}
+    \textcolor{sufered}{回忆}
+
+    前面我们在外部代码中使用形似ming.name的语法修改ming实例的字段
+
+    如何在类的内部代码中修改当前实例的字段？
+\end{frame}
+
+\begin{frame}
+    \frametitle{this变量(Continue)}
+    \textcolor{sufered}{变量this是方法内部的隐含变量，它始终指向当前实例}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{方法}
+    \textcolor{sufered}{方法允许外部代码间接修改对象状态}
+    \begin{lstlisting}
+class Person {
+    private String name;
+    private int age;
+        
+    public String getName() {
+        return this.name;
+    }
+        
+    public void setName(String name) {
+        this.name = name;
+    }
+    ...
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{方法(Continue)}
+    \begin{lstlisting}
+class Person {
+    ...
+    public int getAge() {
+        return this.age;
+    }
+    
+    public void setAge(int age) {
+        if (age < 0 || age > 100) {
+            throw new IllegalArgumentException();
+        }
+        this.age = age;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{方法(Continue)}
+    \textcolor{sufered}{现在我们可以通过方法来修改对象属性}
+    \begin{lstlisting}
+public class Main {
+    public static void main(String[] args) {
+        Person ming = new Person();
+        ming.setName("Xiao Ming"); // 设置name
+        ming.setAge(12); // 设置age
+        System.out.println(ming.getName() + ", " + ming.getAge());
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{封装}
+    \textcolor{sufered}{封装(Encapsulation)}
+
+    是面向对象编程的核心特性之一，它指的是将对象的状态与行为封装在一起，对外部只暴露必要的接口
+\end{frame}
+
+\begin{frame}
+    \frametitle{为什么封装？}
+
+    \begin{enumerate}
+        \item \textbf{隐藏内部实现}：
+              外部无法直接访问和修改对象的内部数据，只能通过对象提供的方法进行操作，可减少错误和不当使用
+
+        \item \textbf{增强安全性和可靠性}：
+              封装性确保对象的内部状态不会因外部干扰而处于不一致的状态
+
+        \item \textbf{易于维护和扩展}：
+              封装可以更改对象的内部实现而不影响使用对象的代码，从而提高代码的灵活性和可维护性
+
+        \item \textbf{提高代码的模块化}：
+              封装使得每个对象可以被视为一个独立的模块，便于开发者更好地理解和管理复杂的系统
+    \end{enumerate}
 \end{frame}
 
 % \section{Vim 编辑器}
