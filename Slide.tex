@@ -7,7 +7,7 @@
 \usepackage{bookman}
 \usefonttheme{serif}
 % \usepackage[T1]{fontenc}
-%\usepackage{tgbonum}
+% \usepackage{tgbonum}
 
 % Other packages
 \usepackage{hyperref}
@@ -36,7 +36,7 @@
 \setlength{\parskip}{1em} % 设置段落之间的间距为 1em
 \graphicspath{{res/}}
 \setCJKmainfont{PingFang SC}
-\setCJKmonofont{Yahei Mono}
+% \setCJKmonofont{Yahei Mono}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,12 +44,12 @@
 %% Author
 \author[计算机协会] % The short name
 {
-%Name
+% Name
 计算机协会
-%\inst{1}
-%\and
-%XXX 
-%\inst{2}
+% \inst{1}
+% \and
+% XXX 
+% \inst{2}
 } 
 %% Title & Subtitle
 \title[Java 常规教学]{Java 常规教学}
@@ -57,26 +57,26 @@
 %% Institution
 \institute[SUFE]
 {
-%\inst{1}
+% \inst{1}
 % Shanghai University of Finance and Economics
 上海财经大学
-%\and
-%\inst{2}
-%Shanghai University of Finance and Economics
+% \and
+% \inst{2}
+% Shanghai University of Finance and Economics
 }
 %% Date
 \date{23会计学院\ ACCA\ 张华轩}
-%%Logo
-%\logo{\includegraphics[height=1cm]{sufe_logo}}
+%% Logo
+% \logo{\includegraphics[height=1cm]{sufe_logo}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Document begins
 \begin{document}
 
-%Title page
+% Title page
 \begin{frame}[noframenumbering]
-    %	\thispagestyle{empty}
+    % \thispagestyle{empty}
     \titlepage{}
     % Logo
     \vspace{-0.5cm}
@@ -89,14 +89,15 @@
     \end{figure}
 \end{frame}
 
-% % Contents page
-% \begin{frame}{Contents}
-% 	\tableofcontents[sectionstyle=show,
-% 		subsectionstyle=show/shaded/hide,
-% 		subsubsectionstyle=show/shaded/hide]
-% \end{frame}
+% Contents page
+\begin{frame}{Contents}
+    \tableofcontents[sectionstyle=show,
+        subsectionstyle=show/shaded/hide,
+        subsubsectionstyle=show/shaded/hide]
+\end{frame}
 
 % Body
+% Section 1
 \section{Java生态}
 \begin{frame}
     \centering
@@ -116,6 +117,7 @@
     \includegraphics[width=0.95\linewidth]{ch1/as.png}
 \end{frame}
 
+% Section 2
 \section{Java基础}
 \begin{frame}
     \frametitle{环境配置}
@@ -356,6 +358,7 @@ import mypackage.MyClass;
     \textcolor{sufered}{降低继承可能带来的耦合性}
 \end{frame}
 
+% Section 3
 \section{面向对象程序设计}
 \begin{frame}
     \frametitle{设计模式}
@@ -425,7 +428,7 @@ import mypackage.MyClass;
         \item \textbf{状态 $\approx$ 属性 $\approx$ 字段}
     \end{itemize}
     \textcolor{sufered}{相对来讲，行为和状态更为抽象}
-    
+
     方法、属性和字段通常可以特指，而行为和状态则可以理解为是它们的集合
 \end{frame}
 
@@ -597,28 +600,6 @@ public class Main {
     \end{enumerate}
 \end{frame}
 
-% \section{Vim 编辑器}
-% \begin{frame}
-%     123
-% \end{frame}
-
-% \section{Git 版本控制}
-% \begin{frame}
-%     123
-% \end{frame}
-
-% \section{正则表达式}
-% \begin{frame}
-%     123
-% \end{frame}
-
-% \section{SH 脚本}
-% \begin{frame}
-%     123
-% \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % End
 \begin{frame}[allowframebreaks]%{End}
     \begin{center}
@@ -635,57 +616,4 @@ public class Main {
     \printbibliography{} % [heading=bibintoc, title=Reference]
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Snippets
-% \begin{frame}[noframenumbering, plain]{Snippets}
-%     \begin{multicols}{2}
-%         \begin{enumerate}
-%             \item 123~\cite[Page10]{corejava}
-%         \end{enumerate}
-%         \begin{itemize}
-%             \item \[V = \frac{4}{3}\pi r^3\]
-%             \item $ V = \frac{4}{3}\pi r^3 $
-%         \end{itemize}
-%     \end{multicols}
-%     \begin{equation}
-%         \label{eq1}
-%         V = \frac{4}{3}\pi r^3
-%     \end{equation}
-%     \center{}
-%     As Equation (\ref{eq1}) \textcolor{sufered}{shows},
-%     $\cdots$, this \emph{equation} is \alert{important}.
-% \end{frame}
-
-% \begin{frame}[noframenumbering, plain]{Snippets}
-%     \begin{columns}
-%         \column{0.5\textwidth}
-%         \begin{block}{Remark}
-%             Sample text
-%         \end{block}
-%         \begin{alertblock}{Important theorem}
-%             red box
-%         \end{alertblock}
-%         \begin{examples}
-%             Sample text in green box.
-%         \end{examples}
-%         \column{0.5\textwidth}
-%         \begin{table}
-%             \centering
-%             \caption{caption}
-%             % \vspace{-0.5cm}
-%             \setlength{\tabcolsep}{5mm}
-%             {
-%                 \begin{tabular}{lcc}
-%                     \toprule %\hline
-%                     1234                     & 123       & a \\ \midrule
-%                     \textcolor{deepred}{135} & w         & f \\
-%                     \textcolor{sufered}{126} & \alert{a} & d \\ \bottomrule
-%                 \end{tabular}
-%             }
-%         \end{table}
-%     \end{columns}
-% \end{frame}
-%\backupend
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
